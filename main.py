@@ -55,7 +55,7 @@ class Downloader:
                     step = int(self.PROGRESS_BAR_LEN/len(songlist))
                     for song in songlist:
                         self.actual_song_downloading = song["title"]
-                        self.YDL_OPTIONS["outtmpl"] = dir+"/"+"".join(song["title"].split())+".mp3"
+                        self.YDL_OPTIONS["outtmpl"] = dir+"\\"+"".join(song["title"].split())+".mp3"
                         self.label2["text"] = song["title"] if len(song["title"]) <= 60 else song["title"][:60]
                         self.window.update_idletasks()
                         try:
