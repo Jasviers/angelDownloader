@@ -82,7 +82,7 @@ class Downloader:
                     list_query = [i for i in url_result.query.split("&") if self.playlist_re.search(i)]
                     query = "".join([url_result.netloc, "/playlist?", list_query[0]])
                 with YoutubeDL(self.YDL_OPTIONS) as ydl:
-                    info = ydl.extract_info(query, download=False)
+                    info = ydl.extract_info(url, download=False)
                 entries_len = len(info['entries'])
                 for elem in info['entries']:
                     vlist.append({'source': elem['formats'][0]['url'], 'title': elem['title']})
