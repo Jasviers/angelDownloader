@@ -1,2 +1,2 @@
-./angelDownloaderEnv/*
-./__pycache__/*
+angelDownloaderEnv/*
+__pycache__/*
