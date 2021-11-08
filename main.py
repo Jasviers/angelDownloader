@@ -52,6 +52,7 @@ class Downloader:
         'noplaylist': 'True'}
         self.playlist_re = re.compile(r"\b(list)\b")
         self.watch_re = re.compile(r"\b(watch)\b")
+        self.errors = ""
         
     def downloadButton(self):
         if url:= self.entry.get():
@@ -68,9 +69,10 @@ class Downloader:
                             with YoutubeDL(self.YDL_OPTIONS) as ydl:
                                 ydl.download([song["source"]])
                         except Exception as e:
-                            print(e)
-                            messagebox.showerror("Error", f"Error downloading: {self.actual_song_downloading}")
+                            self.errors += f"{self.actual_song_downloading};\n"
                         self.pb["value"] += step
+                    if self.errors:
+                        messagebox.showerror("Error", f"Error downloading in: {self.errors}")
                 else:
                     messagebox.showerror("Error", "Url doesn't work")
             else:
